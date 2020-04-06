@@ -17,9 +17,10 @@ def MySchoolAccueil(request):
             userId= dao_menu.getUtilisateur(getuser_id)
             lesApp = dao_menu.getapps(userId)
             lesProfils = dao_menu.getprofils(userId)
+            ecole=dao_menu.getschool(getuser_id)
             #template = loader.get_template('aSideTop/Layout.html')
             context = {
-                'index': 'Dashboard',
+                'index': ecole,
                 'getapps': lesApp,
                 'profils': lesProfils
             }
@@ -35,6 +36,7 @@ def MySchoolAccueil(request):
         template = loader.get_template('securityLog/login.html')
         return HttpResponse(template.render(context, request))
 
+@login_required(redirect_field_name='securityLog/login.html')
 def nothing(request):
     return HttpResponse("Url reussi avec succes")
 
