@@ -12,7 +12,7 @@ from django.urls import reverse_lazy, reverse
 def MySchoolAccueil(request):
     try:
         if request.user.is_authenticated:
-            dash_board = 'tableau de bord stock'
+            
             getuser_id=request.user.id
             userId= dao_menu.getUtilisateur(getuser_id)
             lesApp = dao_menu.getapps(userId)
