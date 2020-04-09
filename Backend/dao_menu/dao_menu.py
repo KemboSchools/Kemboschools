@@ -6,6 +6,7 @@ from Backend.models import MySchoolMenu
 from Backend.models import MySchoolSousMenu
 from Backend.models import RelationUserProfil
 from Backend.models import MySchoolApp
+from Backend.models import MySchoolSchool
 
 
 
@@ -15,13 +16,12 @@ class dao_menu(object):
     def getUtilisateur(id):
         try:
             utilisateur = MySchoolUser.objects.filter(utilisateur=id)
-            print("Utilisateur __id",utilisateur)
             for userId in utilisateur:
                 idUser=userId.id
             return idUser
         except Exception as e:
-            print("IL Y A PAS D'UTILISATEUR AVEC CETTE IDENTIFIANT",e)
-            return None
+            print("IL Y A PAS D'UTILISATEUR AVEC CETTE IDENTIFIANT  Backend(dao_menu(getUtilisateur)) err=",e)
+            
     @staticmethod
     def getapps(user_id):
         try:
@@ -31,8 +31,8 @@ class dao_menu(object):
                     list_.append(ap)
             return list_
         except Exception as e:
-            print("IL Y A PAS D'APPLICATIONS", e)
-            return None
+            print("IL Y A PAS D'APPLICATIONS Backend(dao_menu(getapps)) err=", e)
+          
 
     @staticmethod
     def getprofils(user_id):
@@ -42,8 +42,8 @@ class dao_menu(object):
                list_.append(p)
             return list_
         except Exception as e:
-            print("IL Y A PAS D'APPLICATIONS", e)
-            return None
+            print("IL Y A PAS D'APPLICATIONS Backend(dao_menu(getprofils)) err=", e)
+            
     
     @staticmethod
     def getschool(user_id):
@@ -52,5 +52,12 @@ class dao_menu(object):
                 school=p.school
             return school
         except Exception as e:
-            print("PAS D'ECOLE ,IL N'EST INSCRIT", e)
-            return None
+            print("PAS D'ECOLE ,IL N'EST INSCRIT Backend(dao_menu(getschool)) err=", e)
+           
+    @staticmethod
+    def listSchool():
+        try:
+            return  MySchoolSchool.objects.filter()
+        except Exception as e:
+            print("PAS D'ECOLE ,IL N'EST INSCRIT Backend(dao_menu(listSchool)) err=", e)
+          

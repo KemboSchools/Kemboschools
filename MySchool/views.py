@@ -8,35 +8,29 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
 # Create your views here.
 
-
+@login_required(login_url='login_view')
 def MySchoolAccueil(request):
     try:
-        if request.user.is_authenticated:
-            dash_board = 'tableau de bord stock'
-            getuser_id=request.user.id
-            userId= dao_menu.getUtilisateur(getuser_id)
-            lesApp = dao_menu.getapps(userId)
-            lesProfils = dao_menu.getprofils(userId)
-            ecole=dao_menu.getschool(getuser_id)
-            #template = loader.get_template('aSideTop/Layout.html')
-            context = {
-                'index': ecole,
-                'getapps': lesApp,
-                'profils': lesProfils
+        
+        getuser_id=request.user.id
+        userId= dao_menu.getUtilisateur(getuser_id)
+        lesApp = dao_menu.getapps(userId)
+        lesProfils = dao_menu.getprofils(userId)
+        ecole=dao_menu.getschool(getuser_id)
+        #template = loader.get_template('aSideTop/Layout.html')
+        context = {
+            'index': ecole,
+            'getapps': lesApp,
+            'profils': lesProfils 
             }
-            template = loader.get_template('MySchool/index.html')
-            return HttpResponse(template.render(context, request))
-        else:
-            context = {'login': 'login'}
-            template = loader.get_template('securityLog/login.html')
-            return HttpResponse(template.render(context, request))
+        template = loader.get_template('MySchool/index.html')
+        return HttpResponse(template.render(context, request))
+        
     except Exception as e:
         print("ERREUR MySchoolAccueil", e)
-        context = {'login': 'login'}
-        template = loader.get_template('securityLog/login.html')
-        return HttpResponse(template.render(context, request))
+        return HttpResponseRedirect(reverse("login_view"))
 
-@login_required(redirect_field_name='securityLog/login.html')
+@login_required(login_url='login_view')
 def nothing(request):
     return HttpResponse("Url reussi avec succes")
 

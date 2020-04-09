@@ -6,14 +6,26 @@ from django.contrib.auth.models import User, Group
 from django.utils import timezone
 from datetime import time, timedelta, datetime
 
-
+##########################################################################################################
 class ModelForTime(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
+
+class Adresse (ModelForTime):
+    pays = models.CharField(max_length=100, null=True, blank=True)
+    commune = models.CharField(max_length=100, null=True, blank=True)
+    quartier = models.CharField(max_length=100, null=True, blank=True)
+    avennue = models.CharField(max_length=200, null=True, blank=True)
+    numero= models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.commune
+##########################################################################################################
 class MySchoolSchool(models.Model):
+    adress=models.ForeignKey('Adresse', blank=True, null=True,on_delete=models.CASCADE, related_name="SchoolAdress_set")
     name = models.CharField(max_length=100, null=True, blank=True)
     def __str__(self):
         return self.name
@@ -80,3 +92,4 @@ class MySchoolSousMenu (ModelForTime):
 
     def __str__(self):
         return self.titre
+

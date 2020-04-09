@@ -21,9 +21,7 @@ from . import views
 urlpatterns = [
     path('', views.MySchoolAccueil, name='MySchoolAccueil'),
     path('index/', views.nothing, name='index'),
-  
-
-    
+        
 ]
 """item3.url
     # ex: /polls/
