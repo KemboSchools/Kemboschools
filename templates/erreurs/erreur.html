@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>page erreur</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="{% static 'img/icon.ico'%}" type="image/x-icon"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script src="{% static 'js/plugin/webfont/webfont.min.js'%}"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ["{% static 'css/fonts.min.css'%}"]},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+	<link rel="stylesheet" href="{% static 'css/atlantis.min.css'%}">
+	<link rel="stylesheet" href="{% static 'css/styles.css'%}">
+	<link rel="stylesheet" href="{% static 'css/prism.css'%}">
+</head>
+
+<body>
+
+		<div class="main-header">
+			
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="light-blue2">
+				
+				<div class="container-fluid">
+					<a href="3" class="logo">
+						<img src="{% static 'img/logo.svg'%}" alt="navbar brand" class="navbar-brand">
+					</a>
+
+				</div>
+			</nav>
+		</div>
+
+				<div class="container-fluid ">
+					<br><br><br><br>
+					<div class="card card-documentation ">
+						<div class="card-header bg-danger-gradient text-white bubble-shadow">
+							<h4>Page d'erreur</h4>
+							
+						</div>
+						<div class="card-body">
+							<div class="table-content">
+								<span class="title">Contenu</span>
+								<ul>
+									<li>
+										<a href="#">METHODE </a>
+										<ul>
+											<li>
+												<a href="#">{{fonc}}</a>
+											</li>
+											
+										</ul>
+									</li>
+									<li>
+										<a href="#">MESSAGE </a>
+										<ul>
+											<li>
+												<p style="color: red;">{{ms}}</p>
+											</li>
+											
+										</ul>
+									</li>
+									 
+								</ul>
+							</div>
+					</div>
+				</div>
+
+			    </div>
+
+</body>
+
+</html>

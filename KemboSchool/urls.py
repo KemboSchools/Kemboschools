@@ -15,13 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import handler400,handler403,handler404,handler500
 from . import views
+
+
+handler404='KemboSchool.views.handler400'
+handler404='KemboSchool.views.handler403'
+handler404='KemboSchool.views.handler404'
+handler404='KemboSchool.views.handler500'
+
 
 
 urlpatterns = [
     path('MySchool/', include('MySchool.urls')),
     path('SecurityLogs/', include('securityLogs.urls')),
     path('Applications/', views.applications, name="applications"),
+    # Portal
+    path('kemboSchools/', views.reachPortal, name="portal"),
+    #-------------------------------------------------------
     path('admin/', admin.site.urls),
     
 ]
