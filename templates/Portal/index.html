@@ -43,6 +43,7 @@
 					</button>
 				</div>
 			</div>
+	
 
 			<!-- Navbar Header -->
 			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
@@ -61,6 +62,13 @@
 							</div>
 						</form>
 					</div>
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+						<li class="nav-item toggle-nav-search hidden-caret">
+							<a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
+								<i class="fa fa-search"></i>
+							</a>
+						</li>
+					</ul>
 					
 				</div>
 			</nav>
@@ -73,9 +81,9 @@
 				<div class="sidebar-content">
 					<ul class="nav nav-info">
 						<li class="nav-item">
-							<a href="#">
+							<a href="{% url 'login_view' %}">
 								<i class="fas fa-home"></i>
-								<p>Introduction</p>
+								<p>Se connecter</p>
 							</a>
 						</li>
 						<li class="nav-section">
@@ -107,7 +115,7 @@
 						</div>
 
 						<!--content-->
-						<div class="card-body">
+						<div style="background-color: rgb(212, 225, 235);"  class="card-body" >
 							<div class="row">
 							{% for ecole in ecoles %}
 							<div class="col-sm-4">
