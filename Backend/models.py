@@ -6,6 +6,7 @@ from django.contrib.auth.models import User, Group
 from django.utils import timezone
 from datetime import time, timedelta, datetime
 
+
 ##########################################################################################################
 class ModelForTime(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

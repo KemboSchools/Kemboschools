@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static%}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>{{title}}</title>
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="{% static 'img/icon.ico'%}" type="image/x-icon"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<!-- Fonts and icons -->
+	<script src="{% static 'js/plugin/webfont/webfont.min.js'%}"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ["{% static 'css/fonts.min.css'%}"]},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+	<link rel="stylesheet" href="{% static 'css/atlantis.min.css'%}">
+	<link rel="stylesheet" href="{% static 'css/styles.css'%}">
+	<link rel="stylesheet" href="{% static 'css/prism.css'%}">
+</head>
+<body>
+	<div class="wrapper">
+		<!-- main-header -->
+		<div class="main-header">
+			<div class="logo-header" data-background-color="light-blue2">
+				<a href="#" class="logo">
+					<img src="{% static 'img/logo.svg'%}" alt="navbar brand" class="navbar-brand">
+				</a>
+				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="icon-menu"></i>
+					</span>
+				</button>
+				<button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+				<div class="nav-toggle">
+					<button class="btn btn-toggle toggle-sidebar">
+						<i class="icon-menu"></i>
+					</button>
+				</div>
+			</div>
+	
+
+			<!-- Navbar Header -->
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+				
+				<div class="container-fluid">
+					<div class="collapse" id="search-nav">
+
+						<form  class="navbar-left navbar-form nav-search mr-md-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<button type="submit" class="btn btn-search pr-1">
+										<i class="fa fa-search search-icon"></i>
+									</button>
+								</div>
+								<input id="reacherche" onchange="searchfunction(this.value)" type="text" placeholder="Ecole ..." class="form-control">
+							</div>
+						</form>
+                    </div>
+                    <!-- affichage de l'icon recherche au format mobile ou tablette-->
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+						<li class="nav-item toggle-nav-search hidden-caret">
+							<a class="nav-link" data-toggle="collapse" href="#search-nav" role="button" aria-expanded="false" aria-controls="search-nav">
+								<i class="fa fa-search"></i>
+							</a>
+						</li>
+                    </ul>
+                   <!--end affichage de l'icon recherche au format mobile ou tablette-->
+					
+				</div>
+			</nav>
+			<!-- End Navbar -->
+		</div>
+		<!-- end main-header -->
+
+		<!-- side bar-->
+		<div class="sidebar sidebar-style-2">
+			<div class="sidebar-background"></div>
+			<div class="sidebar-wrapper scrollbar scrollbar-inner">
+				<div class="sidebar-content">
+					<ul class="nav nav-info">
+						<li class="nav-item">
+							<a href="{% url 'login_view' %}">
+								<i class="fas fa-home"></i>
+								<p>Se connecter</p>
+							</a>
+						</li>
+						<li class="nav-section">
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+							<h4 class="text-section">Menus</h4>
+						</li>
+						<li class="nav-item active">
+							<a href="#">
+								<span class="letter-icon">R</span>
+								<p>Recherche</p>
+							</a>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--End side bar-->
+
+		<div class="main-panel">
+			<div class="content content-documentation">
+				<div class="container-fluid">
+					<div class="card card-documentation">
+						<div class="card-header bg-info-gradient text-white bubble-shadow">
+							<h4>Trouvez l'ecole de votre choix par Nom ou commune</h4>
+							<p class="mb-0 op-8">Bienvenue sur le portail Kembo! </p>
+							<p id="nombreResultatat" class="mb-0 op-8"> </p>
+						</div>
+					<div style="background-color: rgb(212, 225, 235);"  class="card-body" >
+							<div id="content" class="row">
+							<!--content-->
+								{%block content%}
+								{%endblock%}
+							<!--end content-->
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+</body>
+
+<!--   Core JS Files   -->
+<script src="{% static 'js/core/jquery.3.2.1.min.js'%}"></script>
+<script src="{% static 'js/core/popper.min.js'%}"></script>
+<script src="{% static 'js/core/bootstrap.min.js'%}"></script>
+
+<!-- jQuery UI -->
+<script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js'%}"></script>
+<script src="{% static 'js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js'%}"></script>
+
+<!-- jQuery Scrollbar -->
+<script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js'%}"></script>
+
+
+<!-- Chart JS -->
+<script src="{% static 'js/plugin/chart.js/chart.min.js'%}"></script>
+
+<!-- jQuery Sparkline -->
+<script src="{% static 'js/plugin/jquery.sparkline/jquery.sparkline.min.js'%}"></script>
+
+<!-- Chart Circle -->
+<script src="{% static 'js/plugin/chart-circle/circles.min.js'%}"></script>
+
+<!-- Datatables -->
+<script src="{% static 'js/plugin/datatables/datatables.min.js'%}"></script>
+
+<!-- Bootstrap Notify -->
+<script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js'%}"></script>
+
+<!-- jQuery Vector Maps -->
+<script src="{% static 'js/plugin/jqvmap/jquery.vmap.min.js'%}"></script>
+<script src="{% static 'js/plugin/jqvmap/maps/jquery.vmap.world.js'%}"></script>
+
+<!-- Sweet Alert -->
+<script src="{% static 'js/plugin/sweetalert/sweetalert.min.js'%}"></script>
+
+<!-- Atlantis JS -->
+<script src="{% static 'js/atlantis.min.js'%}"></script>
+
+<script src="{% static 'js/prism.js'%}"></script>
+<script src="{% static 'js/prism-normalize-whitespace.min.js'%}"></script>
+
+<script type="text/javascript">
+	// Optional
+	Prism.plugins.NormalizeWhitespace.setDefaults({
+		'remove-trailing': true,
+		'remove-indent': true,
+		'left-trim': true,
+		'right-trim': true,
+	});
+
+function searchfunction(val){
+	var elements="";
+	var message="";
+	// la suppression du contenu du containner
+	$('#content').empty();
+	$('#nombreResultatat').empty();
+	//end
+	
+    $.get(
+        "{% url 'rechercheSchool' %}",
+            { rearch: val },
+    function (response) {
+	
+		if(response.length == 1){
+		message= response.length + " Resultat trouvé";
+		$('#nombreResultatat').append(message);
+	}
+	if(response.length > 1){
+		message= response.length + " Resultats trouvés";
+		$('#nombreResultatat').append(message);
+	}
+	if (response.length > 0){
+		for (var i=0;i <=response.length;i++){
+		var nameSchool=
+		elements ='<div class="col-sm-4">';
+			elements +='<div class="card" style="width: 18rem;">';
+				elements +='<img class="card-img-top" src="{% static "img/kembo.jpg" %}" alt="navbar brand">';
+					elements +='<div class="separator-solid"></div> ';
+						elements +='<div class="card-body">';
+							elements +='<h5 class="card-title mb-2 fw-mediumbold">'+ response[i].nameScool+ '</h5>';
+						elements +='<p class="card-text ">'+response[i].pays+'<br><i class="fas fa-map-marker-alt"> </i><span class="letter-icon">C:</span>'+response[i].commune+'/<span class="letter-icon">Q:</span>'+response[i].quartier+'/<span class="letter-icon">Av:</span>r'+response[i].avennue+'/<span class="letter-icon">N°:</span>'+response[i].numero+'</p>';
+					elements +='<a href="#" class="btn btn-info">Voir plus...</a>';
+				elements +='</div>';
+			elements +='</div>';
+		elements +='</div>';
+		
+		$('#content').append(elements)
+		
+		} 
+	}
+	else{
+		elements +='<h1>Aucun resultat</h1>';
+				$('#content').append(elements)
+			}
+         },
+                "json"
+     );
+
+}
+
+</script>
+{%block script%}
+
+{%endblock%}
+</html>

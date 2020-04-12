@@ -30,8 +30,12 @@ urlpatterns = [
     path('MySchool/', include('MySchool.urls')),
     path('SecurityLogs/', include('securityLogs.urls')),
     path('Applications/', views.applications, name="applications"),
-    # Portal
+    # Portaill 
     path('kemboSchools/', views.reachPortal, name="portal"),
+    path('kemboSchoolsRecherche/', views.lister_school_par_recherche_json, name="rechercheSchool"),
+    #detailSchool 
+    path('kemboSchoolsDetails/', views.getDetailSchool, name="detailSchool"),
+
     #-------------------------------------------------------
     path('admin/', admin.site.urls),
     
