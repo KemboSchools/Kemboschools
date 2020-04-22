@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^logout/$', views.logout_view, name='logout_view'),
     url(r'^registrer/save$', views.creer_un_user, name='registrer_view'),
     url(r'^registrer/form$', views.get_registrer, name='get_registrer_view'),
-    url(r'^verificationUsernameEmail/form$', views.get_Username, name='verificationUsernameEmail'),
+    url(r'^verificationUserName/form$', views.get_Username, name='verificationUserName'),
+    url(r'^verificationUserEmail/form$', views.get_Useremail, name='verificationUserEmail'),
 ]

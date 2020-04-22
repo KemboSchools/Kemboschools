@@ -43,14 +43,14 @@
                     <input type="text" oninput="checkUserName(this.value)"  class="form-control form-control-user" id="exampleuserName" name="username" placeholder="user Name">
                   </div>
                   <div class="col-sm-4">
-                    <input type="text"   class="form-control form-control-user" id="examplefistName" name="first_name" placeholder="fist Name">
+                    <input type="text"   class="form-control form-control-user champ" id="examplefistName" name="first_name" placeholder="fist Name">
                   </div>
                   <div class="col-sm-4">
-                    <input type="text"    class="form-control form-control-user" id="exampleLastName" name="last_name" placeholder="Last Name">
+                    <input type="text"    class="form-control form-control-user champ" id="exampleLastName" name="last_name" placeholder="Last Name">
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email"   class="form-control form-control-user" id="exampleInputEmail" name="email" placeholder="Email Address">
+                  <input type="email" oninput="checkUserEmail(this.value)"  class="form-control form-control-user" id="exampleInputEmail" name="email" placeholder="Email Address">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -104,8 +104,42 @@
       $erreur = $('#erreur'),
       $champ = $('.champ');
 
+      // Parametrage de la qualité du mot de pass
+      var $strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+      var $mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+      // End
+    //Verification de la complexité du mot de pass
+    $mdp.keyup(function(){
+
+      if($strongRegex.test($(this).val())) {
+        $(this).css({ // on remet le style des champs comme on l'avait défini dans le style CSS
+          borderColor: 'green',
+          color: 'green'
+        });
+      }
+    else if($mediumRegex.test($(this).val())){
+      $(this).css({ // on remet le style des champs comme on l'avait défini dans le style CSS
+        borderColor: 'orange',
+        color: 'orange'
+      });
+    }
+    else{
+      $(this).css({ 
+        // on remet le style des champs comme on l'avait défini dans le style CSS
+        borderColor: 'red',
+        color: 'red'
+      });
+      $envoi.prop('disabled',true);
+
+    }
+
+      });
+    // End
+    
+    // Verification de du nombre de caractère
     $champ.keyup(function () {
-      if ($(this).val().length < 5) { // si la chaîne de caractères est inférieure à 5
+      if ($(this).val().length < 5) {
+         // si la chaîne de caractères est inférieure à 5
         $(this).css({ // on rend le champ rouge
           borderColor: 'red',
           color: 'red'
@@ -118,14 +152,15 @@
         });
       }
     });
-
+    // End 
+    // Verification de la confirmation du mot de pass 
     $confirmation.keyup(function () {
       if ($(this).val() != $mdp.val()) { // si la confirmation est différente du mot de passe
         $(this).css({ // on rend le champ rouge
-
           borderColor: 'red',
           color: 'red'
         });
+        $envoi.prop('disabled',true);
       }
       else {
         $(this).css({ // si tout est bon, on le rend vert
@@ -133,10 +168,10 @@
           color: 'green'
          
         });
-         alert($(this).val())
+        
       }
     });
-
+    //End
     function verifier(champ) {
       if (champ.val() == "") { // si le champ est vide
         $erreur.css('display', 'block'); // on affiche le message d'erreur
@@ -164,8 +199,7 @@
       });
       $erreur.css('display', 'none'); // on prend soin de cacher le message d'erreur
     });
-
-  });
+    });
 
 
   function checkUserName(username){
@@ -173,7 +207,7 @@
     var $usernameField=$('#exampleuserName')
 
     $.get(
-        "{% url 'verificationUsernameEmail' %}",
+        "{% url 'verificationUserName' %}",
             { username: username},
     function (response) {
    
@@ -202,7 +236,40 @@
      );
 
 }
+  function checkUserEmail(email){
+    var $boutonValider=$('#envoi')
+    var $usernameField=$('#exampleInputEmail')
 
+    $.get(
+        "{% url 'verificationUserEmail' %}",
+            { email: email},
+    function (response) {
+   
+        if (response=="true"){
+          //alert(response)
+          $usernameField.css({ // on remet le style des champs comme on l'avait défini dans le style CSS
+            borderColor: 'red',
+            color: 'red'
+          });
+          $boutonValider.prop('disabled',true);
+        }
+        else if(response=="false"){
+         // alert("Not matched")
+           $usernameField.css({ // on remet le style des champs comme on l'avait défini dans le style CSS
+            borderColor: '#ccc',
+            color: '#555'
+          });
+          $boutonValider.prop('disabled',false);
+         
+        }else{
+          alert(response)
+        }
+
+     },
+        "json"
+     );
+
+}
 </script>
 </body>
 

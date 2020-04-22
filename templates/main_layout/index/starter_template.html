@@ -310,15 +310,17 @@
 
 							<div class="collapse in" id="collapseExample">
 								<ul class="nav">
+									<!-- profil venant de de larelation -->
 									{% for u in profils %}
 									
 									<li>
 										<a href="#profile">
-											<span class="link-collapse">{{u}}</span>
+											<span class="link-collapse">{{u.profil.titre}}</span>
 										</a>
 									</li>
 								
 									{%endfor%}
+									<!--End profil venant de de larelation -->
 									
 								</ul>
 							</div>

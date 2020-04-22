@@ -4,9 +4,9 @@ from django.template import loader
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy, reverse
+from Backend.dao_MessageErreur.dao_erreurForm import dao_erreurForm
 
 
-messageErreur='Veuillez compléter correctement les champs « nom d\'utilisateur » et « mot de passe » d\'un compte autorisé. Sachez que les deux champs peuvent être sensibles à la casse. '
 
 def login_view(request):
     try:
@@ -32,7 +32,7 @@ def login_view(request):
     except Exception as e:
         print('problem %s' % (e))
         context = {
-            'erreur':messageErreur}
+            'erreur':dao_erreurForm.erreurInput()}
         template = loader.get_template('securityLog/login.html')
         return HttpResponse(template.render(context, request))
 
@@ -48,9 +48,7 @@ def logout_view(request):
 
 def iam_authenticated(request):
     try:
-        print('authentification touché')
         if request.user.is_authenticated:
-            print('authentification touché')
             return None
         else:
             context = {'login': 'login'}
@@ -77,7 +75,7 @@ def creer_un_user(request):
         try:
             User.objects.get(username=usernameForm)
             context = {
-            'erreur': messageErreur}
+            'erreur': dao_erreurForm.erreurInput()}
             template = loader.get_template('securityLog/register.html')
             return HttpResponse(template.render(context, request))
         except User.DoesNotExist:
@@ -94,8 +92,7 @@ def creer_un_user(request):
             return HttpResponse(template.render(context, request))
 
     except Exception as e:
-        context = {
-            'erreur': messageErreur+" "+ e}
+        context = {'erreur': dao_erreurForm.erreurInput(e)}
         template = loader.get_template('securityLog/register.html')
         return HttpResponse(template.render(context, request))
 
@@ -110,6 +107,16 @@ def get_Username(request):
         username=request.GET['username']
         #email=request.GET['email']
         result=User.objects.get(username=username)
+        if result:
+            return JsonResponse("true", safe=False)
+        
+    except User.DoesNotExist:
+        return JsonResponse("false", safe=False)
+
+def get_Useremail(request):
+    try:
+        email=request.GET['email']
+        result=User.objects.get(email=email)
         if result:
             return JsonResponse("true", safe=False)
         
