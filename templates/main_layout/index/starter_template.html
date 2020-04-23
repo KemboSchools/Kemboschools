@@ -62,7 +62,7 @@
 										<i class="fa fa-search search-icon"></i>
 									</button>
 								</div>
-								<input type="text" placeholder="Search ..." class="form-control">
+								<input oninput="searchfunction(this.value)" type="text" placeholder="Search ..." class="form-control">
 							</div>
 						</form>
 					</div>
@@ -414,7 +414,10 @@
 					</div>
 					<!--end a modiffier pour le racourci -->
 					<!-- <div class="page-category">Inner page content goes here</div> -->
-					{% block content %}{% endblock %}
+					<div id="content" class="row">
+						{% block content %}
+						{% endblock %}
+					</div>
 					<!--End <div class="page-category">Inner page content goes here</div> -->
 				</div>
 			</div>
@@ -487,5 +490,58 @@
 
 	<script src="{% static 'js/prism.js'%}"></script>
 	<script src="{% static 'js/prism-normalize-whitespace.min.js'%}"></script>
+
+	<script>
+	function searchfunction(val){
+	var elements="";
+	var message="";
+	// la suppression du contenu du containner
+	$('#content').empty();
+	$('#nombreResultatat').empty();
+	//end
+	
+    $.get(
+        "{% url 'rechercheSchool' %}",
+            { rearch: val },
+    function (response) {
+	
+		if(response.length == 1){
+		message= response.length + " Resultat trouvé";
+		$('#nombreResultatat').append(message);
+	}
+	if(response.length > 1){
+		message= response.length + " Resultats trouvés";
+		$('#nombreResultatat').append(message);
+	}
+	if (response.length > 0){
+		for (var i=0;i <=response.length;i++){
+		
+		elements ='<div class="col-sm-4">';
+			elements +='<div class="card" style="width: 18rem;">';
+				elements +='<img class="card-img-top" src="{% static "img/kembo.jpg" %}" alt="navbar brand">';
+					elements +='<div class="separator-solid"></div> ';
+						elements +='<div class="card-body">';
+							elements +='<h5 class="card-title mb-2 fw-mediumbold">'+ response[i].nameScool+ '</h5>';
+						elements +='<p class="card-text ">'+response[i].pays+'<br><i class="fas fa-map-marker-alt"> </i><span class="letter-icon">C:</span>'+response[i].commune+'/<span class="letter-icon">Q:</span>'+response[i].quartier+'/<span class="letter-icon">Av:</span>r'+response[i].avennue+'/<span class="letter-icon">N°:</span>'+response[i].numero+'</p>';
+					elements +='<a href="#" class="btn btn-info">Voir plus...</a>';
+				elements +='</div>';
+			elements +='</div>';
+		elements +='</div>';
+		
+		$('#content').append(elements)
+		
+		} 
+	}
+	else{
+		elements +='<h1>Aucun resultat</h1>';
+				$('#content').append(elements)
+			}
+         },
+                "json"
+     );
+
+}
+
+	</script>
 </body>
 </html>
