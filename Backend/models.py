@@ -72,6 +72,7 @@ class MySchoolApp(ModelForTime):
     background_image = models.CharField(max_length=100, null=True, blank=True)
     installer = models.BooleanField()
     url = models.CharField(max_length=100, null=True, blank=True)
+    
 
     def __str__(self):
         return self.titre
