@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>{{ school.name }}</title>
+
+  <link href="{% static 'School_details/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'School_details/css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'School_details/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="css/lightbox.css" rel="stylesheet">
+  <link href="{% static 'School_details/css/main.css' %}" rel="stylesheet">
+  <link id="css-preset" href="{% static 'School_details/css/presets/preset1.css' %}" rel="stylesheet">
+  <link href="{% static 'School_details/css/responsive.css' %}" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'School_details/engine1/style.css' %}" />
+  <script type="text/javascript" src="{% static 'School_details/engine1/jquery.js' %}"></script>
+
+
+
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+   <link rel="shortcut icon" href="{% static 'School_details/images/Info.ico' %}">
+</head><!--/head-->
+
+<body>
+
+  <!--.preloader-->
+  <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+  <!--/.preloader-->
+
+  <header id="accueil">
+
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+
+      <div class="carousel-inner">
+
+        {% block accueil-avec-carousel %}
+
+        {% endblock %}
+
+      </div>
+
+      <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+      <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+      <a id="tohash" href="#Apropos_de_nous"><i class="fa fa-angle-down"></i></a>
+
+    </div><!--/#home-slider-->
+
+    <div class="main-nav">
+      <div class="container">
+
+        {% block barre-de-navigation %}
+          <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="#">
+            <p><img class="img-responsive" src="{% static 'School_details/images/cp.png' %}" alt="">{{school.name}}</p>
+          </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="scroll active"><a href="#accueil"><img class="img-responsive" src="{% static 'School_details/images/home.png' %}" alt="">Accueil</a></li>
+            <li class="scroll"><a href="#Apropos_de_nous"><img class="img-responsive" src="{% static 'School_details/images/about.png' %}" alt="">Nous</a></li>
+            <li class="scroll"><a href="#portfolio"><img class="img-responsive" src="{% static 'School_details/images/realisations.png' %}" alt="">Realisations</a></li>
+            <li class="scroll"><a href="#options_organisees"><img class="img-responsive" src="{% static 'School_details/images/activites.png' %}" alt="">Options Organisees</a></li>
+            <li class="scroll"><a href="#activites_scolaires"><img class="img-responsive" src="{% static 'School_details/images/activites.png' %}" alt="">Activites</a></li>
+          </ul>
+        </div>
+        {% endblock %}
+      </div>
+    </div><!--/#main-nav-->
+
+  </header><!--/#home-->
+
+  <section id="Apropos_de_nous" >
+          <div class="container">
+            {% block apropos-de-nous %}
+
+            {% endblock %}
+          </div>
+  </section><!--/#about-us-->
+
+  <section id="portfolio">
+            {% block portfolio %}
+
+            {% endblock %}
+  </section><!--/#portfolio-->
+
+  <section id="options_organisees">
+    <div class="container">
+       {% block options_organisees %}
+
+      {% endblock %}
+
+    </div>
+
+  </section>
+
+
+  <section id="activites_scolaires">
+<div class="container">
+      {% block activites_scolaires %}
+
+      {% endblock %}
+ </div>
+  </section><!--/#activites_scolaires-->
+
+  <footer id="footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <p>&copy; 2020</p>
+          </div>
+          <div class="col-sm-6">
+            <p class="pull-right">WebMaster :  <a href="">StarlyBeloved</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="{% static 'School_details/js/jquery.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/js/jquery.inview.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/js/wow.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/js/mousescroll.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/js/smoothscroll.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/js/jquery.countTo.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/js/lightbox.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/js/main.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'School_details/engine1/wowslider.js' %}"></script>
+  <script type="text/javascript" src="{% static 'School_details/engine1/script.js' %}"></script>
+
+</body>
+</html>

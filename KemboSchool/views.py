@@ -12,22 +12,22 @@ def applications(request):
 # Liste des classes
 def reachPortal (request):
     try:
-    
+
         ecoles=dao_menu.listSchool()
-       
+
         context = {
             'ecoles': ecoles,
             }
         template = loader.get_template('portal/index.html')
         return HttpResponse(template.render(context, request))
     except Exception as e:
-        return render(request,'erreurs/erreur.html',{"fonc":"reachPortal","ms":e}) 
+        return render(request,'erreurs/erreur.html',{"fonc":"reachPortal","ms":e})
 
 
 def lister_school_par_recherche_json(request):
-   
+
     try:
-     
+
        recherche = request.GET['rearch']
        print("votre recherche ",recherche)
        ecolesR=[]
@@ -45,22 +45,22 @@ def lister_school_par_recherche_json(request):
            ecolesR.append(resultats)
            print(resultats)
        return JsonResponse(ecolesR, safe=False)
-        
+
     except Exception as e:
         print(" exception ",e)
-        return render(request,'erreurs/erreur.html',{"fonc":"lister_school_par_recherche_json","ms":e}) 
+        return render(request,'erreurs/erreur.html',{"fonc":"lister_school_par_recherche_json","ms":e})
 
-def getDetailSchool (request):
-    try:
-        ecoles=dao_menu.listSchool()
-       
-        context = {
-            'ecoles': ecoles,
-            }
-        template = loader.get_template('portal/detailSchool.html')
-        return HttpResponse(template.render(context, request))
-    except Exception as e:
-        return render(request,'erreurs/erreur.html',{"fonc":"getDetailSchool","ms":e}) 
+# def getDetailSchool (request):
+#     try:
+#         ecoles=dao_menu.listSchool()
+
+#         context = {
+#             'ecoles': ecoles,
+#             }
+#         template = loader.get_template('portal/detailSchool.html')
+#         return HttpResponse(template.render(context, request))
+#     except Exception as e:
+#         return render(request,'erreurs/erreur.html',{"fonc":"getDetailSchool","ms":e})
 
 #Pour Les erreur
 def handler400(request,exception=None):
@@ -74,3 +74,17 @@ def handler500(request,exception=None):
 
 def handler404(request,exception=None):
     return render(request,'erreurs/404.html',{},status=404)
+
+# CODES STARLY
+def Get_Details_School(request,id_school):
+
+    school=dao_menu.getSchool(id_school)
+    school_options=dao_menu.getSchool_option(id_school)
+    school_activites=dao_menu.getSchool_activites(id_school)
+
+    if school==None:
+      return render(request,'erreurs/404.html',{},status=404)
+
+    return render(request, 'portal/detailsSchool.html' , locals())
+
+# Fin Code STARLY

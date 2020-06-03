@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.conf.urls import handler400,handler403,handler404,handler500
 from . import views
 
@@ -24,19 +24,19 @@ handler404='KemboSchool.views.handler403'
 handler404='KemboSchool.views.handler404'
 handler404='KemboSchool.views.handler500'
 
-
-
 urlpatterns = [
     path('MySchool/', include('MySchool.urls')),
     path('SecurityLogs/', include('securityLogs.urls')),
     path('Applications/', views.applications, name="applications"),
-    # Portaill 
+    # Portaill
     path('kemboSchools/', views.reachPortal, name="portal"),
     path('kemboSchoolsRecherche/', views.lister_school_par_recherche_json, name="rechercheSchool"),
-    #detailSchool 
-    path('kemboSchoolsDetails/', views.getDetailSchool, name="detailSchool"),
+    #detailSchool
+    # path('kemboSchoolsDetails/', views.getDetailSchool, name="detailSchool"),
 
+    # Get School Details ----- starly code
+    re_path(r'^kemboGetDetailsSchool/(\d+)$', views.Get_Details_School, name="voir_les_details_d_une_ecole_par_son_id"),
     #-------------------------------------------------------
     path('admin/', admin.site.urls),
-    
+
 ]

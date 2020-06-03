@@ -12,3 +12,9 @@ admin.site.register(models.RelationUserProfil)
 admin.site.register(models.MySchoolSchool)
 admin.site.register(models.RelationSchoolUser)
 admin.site.register(models.Adresse)
+
+# Code Starly
+admin.site.register(models.Details_school)
+admin.site.register(models.Banque_liens_img_School)
+admin.site.register(models.Activites_scolaire)
+admin.site.register(models.Options_organisee)

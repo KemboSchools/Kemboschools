@@ -1,0 +1,471 @@
+
+{% extends "main_layout/details/details_school_layout_starly.html" %}
+{% load static %}
+
+
+{% block accueil-avec-carousel %}
+
+    <div class="item active" style="background-image: url({% static school.banque_liens_img_school.carousel|add:'/1.jpg' %})">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Bienvenu à <span> {{ school.name }}</span></h1>
+            <p class="animated fadeInRightBig">Notre Devise</p>
+            <p class="animated fadeInUpBig">{{ school.details_school.devise }}</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#Apropos_de_nous"><img class="img-responsive" src="{% static 'School_details/images/demarrer.png' %}" alt="">Demarrer Maintenant</a>
+          </div>
+    </div>
+
+    <div class="item" style="background-image: url({% static school.banque_liens_img_school.carousel|add:'/2.jpg' %})">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">Nous travaillons avec <span>KemboSchool</span></h1>
+            <p class="animated fadeInRightBig">Notre Partenaire Officiel</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#Apropos_de_nous"><img class="img-responsive" src="{% static 'School_details/images/demarrer.png' %}" alt="">Demarrer Maintenant</a>
+          </div>
+    </div>
+
+    <div class="item" style="background-image: url({% static school.banque_liens_img_school.carousel|add:'/3.jpg' %})">
+          <div class="caption">
+            <h1 class="animated fadeInLeftBig">L'education des vos enfants <p>c'est à <span> {{ school.name }}</span></p></h1>
+            <p class="animated fadeInRightBig">Apres la lecture - Veuillez inscrire votre enfant pour une education garantie !</p>
+            <a data-scroll class="btn btn-start animated fadeInUpBig" href="#Apropos_de_nous"><img class="img-responsive" src="{% static 'School_details/images/demarrer.png' %}" alt="">Demarrer Maintenant</a>
+          </div>
+    </div>
+
+{% endblock %}
+
+{% block apropos-de-nous %}
+<div class="item_apropos">
+
+<div class="row">
+    <div class="fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <h1 id="titre-1">APROPOS DE NOUS</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+          <div>
+            <fieldset>
+              <legend>
+                <h2 id="titre-2">1. Historique </h2>
+              </legend>
+              <p>
+                {% autoescape off %}
+                  {{ school.details_school.historique|linebreaksbr }}
+                {% endautoescape %}
+              </p>
+            </fieldset>
+          </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+          <div>
+            <fieldset>
+              <legend>
+                <h2 id="titre-2">2. Situation Geographique et Juridique </h2>
+              </legend>
+              <p>
+                 {% autoescape off %}
+               {{ school.details_school.situation_geographique|linebreaksbr }}
+               {% endautoescape %}
+              </p>
+            </fieldset>
+          </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-sm-12">
+            <fieldset>
+              <legend>
+                  <h2 id="titre-2">3. Impact Socio-economique </h2>
+              </legend>
+              <p>
+                 {% autoescape off %}
+                  {{ school.details_school.impact_sociaux_eco|linebreaksbr }}
+                  {% endautoescape %}
+              </p>
+            </fieldset>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+          <div>
+
+            <fieldset>
+              <legend>
+                 <h2 id="titre-2">4. Contacts </h2>
+              </legend>
+              <p>
+                 {% autoescape off %}
+                  {{ school.details_school.contacts|linebreaksbr }}
+                  {% endautoescape %}
+              </p>
+            </fieldset>
+
+          </div>
+    </div>
+
+</div>
+</div>
+{% endblock %}
+
+{% block portfolio %}
+
+    <div class="row">
+        <div class="fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+              <h1 id="titre-1">NOS REUSSITES</h1>
+              <p><center>{{school.name}} vous presente ci-dessous son tableau de scoring</center></p>
+        </div>
+    </div>
+
+    <div class="container-fluid"></div>
+
+      <div class="row">
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/1.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/2.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/3.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/3.jpg' %}" alt="">
+            </div>
+
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/5.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/1.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/4.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/3.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/1.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/2.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/3.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="folio-image">
+              <img class="img-responsive" src="{% static school.banque_liens_img_school.portfolio|add:'/4.jpg' %}" alt="">
+            </div>
+            <div class="overlay">
+              <div class="overlay-content">
+                <div class="overlay-text">
+                  <div class="folio-info">
+                    <h3>2014 - 2015</h3>
+                    <p>100% Biochimie</p>
+                  </div>
+                  <div class="folio-overview">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+{% endblock %}
+
+{% block activites_scolaires %}
+    <div class="row">
+    <div class="fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <h1 id="titre-1">Activites Scolaires</h1>
+    </div>
+    </div>
+
+  <div id="wowslider-container1">
+<div class="ws_images">
+    <ul>
+      {% for s_a in school_activites %}
+        <li>
+            <a href="#">
+            <img title="<b>{{ s_a.titre_activite }}</b><p>{{ s_a.description }}</p>" src="{% static s_a.lien_img %}" alt=""/>
+            </a>
+        </li>
+      {% endfor %}
+    </ul>
+</div>
+</div>
+<div class="ws_shadow"></div>
+
+
+
+<!--  -->
+{% endblock %}
+
+{% block options_organisees %}
+
+    <div class="row">
+    <div class="fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <h1 id="titre-1">OPTIONS ORGANISEES</h1>
+    </div>
+    </div>
+
+    {% for s_o in school_options %}
+
+    <div class="item_option">
+      <div class="itemimage">
+        <h2><img class="img-responsive text_flo_left" src="{% static 'School_details/images/programme.png' %}" alt=""><p class="">{{s_o.titre_option}}</p></h2>
+              <img class="img-responsive op_des" src="{% static school.banque_liens_img_school.carousel|add:'/ess.jpg' %}" alt="">
+              <p class="item_body">{{s_o.description}}</p>
+      </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
+
+
+<!-- ce block n est pas dispo pour le moment -->
+{% block communique_publique %}
+
+    <div class="about-info wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h1>COMMUNIQUEES PUBLIQUE</h1>
+    </div>
+
+    <div class="row">
+
+    <div class="col-sm-4">
+          <div>
+            <h2>Historique </h2>
+            <p>{{ school.details_school.historique }}</p>
+            <p>{% lorem 2 p %}</p>
+          </div>
+    </div>
+
+    <div class="col-sm-4">
+          <div >
+            <h2>Options Organisées </h2>
+             <p>Nous organisons les options suivants dans notre etablissement :</p>
+            <p>{{ school.details_school.options_organisees|linenumbers|linebreaksbr }}</p>
+          </div>
+    </div>
+
+    <div class="col-sm-4">
+          <div >
+            <h2>Options Organisées </h2>
+             <p>Nous organisons les options suivants dans notre etablissement :</p>
+            <p>{{ school.details_school.options_organisees|linenumbers|linebreaksbr }}</p>
+          </div>
+    </div>
+
+    </div>
+{% endblock %}
+
+
+
+
+
