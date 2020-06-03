@@ -1,27 +1,24 @@
 
 {% extends "main_layout/portail/portail_layout.html" %}
 {% load static%}
- 
- 
+
+
 
 	{% block content %}
 	{% for ecole in ecoles %}
 	<div class="col-sm-4">
 		<div class="card" style="width: 18rem;">
-		
+
 			<img class="card-img-top" src="{% static 'img/kembo.jpg'%}" alt="navbar brand">
-			<div class="separator-solid"></div> 
-			  
-		
+			<div class="separator-solid"></div>
+
+
 			<div class="card-body">
 				<h5 class="card-title mb-2 fw-mediumbold">{{ecole.name}}</h5>
 				<p class="card-text ">{{ecole.adress.pays}}<br><i class="fas fa-map-marker-alt"> </i><span class="letter-icon">C:</span>{{ecole.adress.commune}}/<span class="letter-icon">Q:</span>{{ecole.adress.quartier}}/<span class="letter-icon">Av:</span>{{ecole.adress.avennue}}/<span class="letter-icon">N°:</span>{{ecole.adress.numero}}</p>
-				<a href="#" class="btn btn-info">Voir plus...</a>
+				<a href="{% url "voir_les_details_d_une_ecole_par_son_id" ecole.id %}" class="btn btn-info">Voir plus...</a>
 			</div>
 		</div>
 	</div>
 	{% endfor %}
 	{% endblock %}
-
-
-
